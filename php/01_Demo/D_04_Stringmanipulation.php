@@ -26,4 +26,5 @@ echo "<br>";
 $pos = strpos($beispielString, "wir");
 echo $pos;
 
+
 ?>
