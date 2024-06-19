@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formelrechner</title>
+    <script>
+        function updateForm(){
+            const form = document.getElementById("form-inputs");
+            const shape = document.getElementById("shape-select").value;
+
+            form.innerHTML = ''; // Clear the form
+
+            if (shape === 'quadratische Fläche'){
+                form.innerHTML = `
+                    <input type="number" name="längeA" placeholder="Länge A" required>
+                `;
+            } else if (shape === 'Viereckige Fläche'){
+                form.innerHTML = `
+                    <input type="number" name="längeA" placeholder="Länge A" required>
+                    <input type="number" name="längeB" placeholder="Länge B" required>
+                `;
+            } else if (shape === 'Würfel Flächeninhalt'){
+                form.innerHTML = `
+                    <input type="number" name="längeA" placeholder="Länge A" required>
+                    <input type="number" name="höhe" placeholder="Höhe" required>
+                `;
+            } else if (shape === 'Kugel Flächeninhalt'){
+                form.innerHTML = `
+                    <input type="number" name="durchmesser" placeholder="Durchmesser" required>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Formelrechner</h1>
+    <form action="../php/formel.php" method="post">
+        <select name="shape" id="shape-select" onchange="updateForm()" required>
+            <option value="">Wähle eine Form</option>
+            <option value="quadratische Fläche">Quadratische Fläche</option>
+            <option value="Viereckige Fläche">Viereckige Fläche</option>
+            <option value="Würfel Flächeninhalt">Würfel Flächeninhalt</option>
+            <option value="Kugel Flächeninhalt">Kugel Flächeninhalt</option>
+        </select>
+
+        <div id="form-inputs">
+            <!-- Dynamische Eingabefelder erscheinen hier -->
+        </div>
+
+        <br><br>
+        <button type="submit">Berechnen</button>
+    </form>
+</body>
+</html>
